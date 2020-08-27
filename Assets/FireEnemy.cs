@@ -10,6 +10,27 @@ public class FireEnemy : EnemyBase
     NavMeshAgent nmAgent;
     Animator animator;
 
+    public enum FireAI
+    {
+        Run = 0,
+        attack1,
+        attack2,
+        gethit,
+        death1,
+        death2
+    } public FireAI fAI;
+
+    public FireAI getState()
+    {
+        return fAI;
+    }
+
+    public void setState(FireAI state)
+    {
+        fAI = state;
+    }
+       
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,24 +40,44 @@ public class FireEnemy : EnemyBase
         nmAgent = GetComponent<NavMeshAgent>();
         nmAgent.speed = speed;
         animator = GetComponent<Animator>();
+        fAI = FireAI.Run;
     }
 
     // Update is called once per frame
     void Update()
     {
         distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
-        Debug.Log(distancefromPlayer);
+        
         if (distancefromPlayer < 3.0f)
         {
-            animator.SetTrigger("Attack(1)");
-            animator.SetBool("Run", false);
-            nmAgent.isStopped = true;
+            setState(FireAI.attack1);
         }
         else
         {
-            animator.SetBool("Run", true);
-            nmAgent.isStopped = false;
-            nmAgent.SetDestination(target.transform.position);
+            setState(FireAI.Run);
+        }
+
+        switch (fAI)
+        {
+            case FireAI.Run:
+                nmAgent.speed = speed;
+                nmAgent.isStopped = false;
+                nmAgent.SetDestination(target.transform.position);
+                break;
+            case FireAI.attack1:
+                nmAgent.isStopped = true;
+                nmAgent.speed = 0;
+                break;
+            case FireAI.attack2:
+                break;
+            case FireAI.gethit:
+                break;
+            case FireAI.death1:
+                break;
+            case FireAI.death2:
+                break;
+            default:
+                break;
         }
     }
 }
