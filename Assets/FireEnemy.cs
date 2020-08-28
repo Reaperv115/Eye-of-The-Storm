@@ -47,7 +47,7 @@ public class FireEnemy : EnemyBase
     void Update()
     {
         distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
-        
+        Debug.Log(distancefromPlayer);
         if (distancefromPlayer < 3.0f)
         {
             setState(FireAI.attack1);
@@ -63,10 +63,13 @@ public class FireEnemy : EnemyBase
                 nmAgent.speed = speed;
                 nmAgent.isStopped = false;
                 nmAgent.SetDestination(target.transform.position);
+                animator.SetBool("run 0", true);
                 break;
             case FireAI.attack1:
                 nmAgent.isStopped = true;
                 nmAgent.speed = 0;
+                animator.SetBool("run 0", false);
+                animator.SetTrigger("atack1");
                 break;
             case FireAI.attack2:
                 break;
