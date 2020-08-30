@@ -40,21 +40,18 @@ public class FireEnemy : EnemyBase
         nmAgent = GetComponent<NavMeshAgent>();
         nmAgent.speed = speed;
         animator = GetComponent<Animator>();
-        fAI = FireAI.Run;
+        attackRange = 3.0f;
+        //fAI = FireAI.Run;
     }
 
     // Update is called once per frame
     void Update()
     {
         distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
-        Debug.Log(distancefromPlayer);
+        //Debug.Log(distancefromPlayer);
         if (distancefromPlayer < 3.0f)
         {
             setState(FireAI.attack1);
-        }
-        else
-        {
-            setState(FireAI.Run);
         }
 
         switch (fAI)
@@ -64,12 +61,22 @@ public class FireEnemy : EnemyBase
                 nmAgent.isStopped = false;
                 nmAgent.SetDestination(target.transform.position);
                 animator.SetBool("run 0", true);
+                distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
+                if (distancefromPlayer < attackRange)
+                {
+                    setState(FireAI.attack1);
+                }
                 break;
             case FireAI.attack1:
                 nmAgent.isStopped = true;
                 nmAgent.speed = 0;
                 animator.SetBool("run 0", false);
                 animator.SetTrigger("atack1");
+                distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
+                if (distancefromPlayer > attackRange)
+                {
+                    setState(FireAI.Run);
+                }
                 break;
             case FireAI.attack2:
                 break;
@@ -78,9 +85,23 @@ public class FireEnemy : EnemyBase
             case FireAI.death1:
                 break;
             case FireAI.death2:
+                animator.Play("death2");
+                animator.SetBool("run 0", false);
+                nmAgent.isStopped = true;
+                nmAgent.speed = 0;
                 break;
             default:
                 break;
+        }
+    }
+
+    public void takeDamage(float damage)
+    {
+        health -= damage;
+
+        if (health <= 0.0f)
+        {
+            setState(FireAI.death2);
         }
     }
 }
