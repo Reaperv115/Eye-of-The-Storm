@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class FireEnemy : EnemyBase
 {
-    [SerializeField]
     GameObject target;
     NavMeshAgent nmAgent;
     Animator animator;
@@ -41,7 +40,8 @@ public class FireEnemy : EnemyBase
         nmAgent.speed = speed;
         animator = GetComponent<Animator>();
         attackRange = 3.0f;
-        //fAI = FireAI.Run;
+        fAI = FireAI.Run;
+        target = GameObject.Find("Player");
     }
 
     // Update is called once per frame
