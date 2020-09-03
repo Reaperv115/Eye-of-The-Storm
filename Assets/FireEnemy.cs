@@ -60,7 +60,6 @@ public class FireEnemy : EnemyBase
                 nmAgent.speed = speed;
                 nmAgent.isStopped = false;
                 nmAgent.SetDestination(target.transform.position);
-                animator.SetBool("run 0", true);
                 distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
                 if (distancefromPlayer < attackRange)
                 {
@@ -70,8 +69,6 @@ public class FireEnemy : EnemyBase
             case FireAI.attack1:
                 nmAgent.isStopped = true;
                 nmAgent.speed = 0;
-                animator.SetBool("run 0", false);
-                animator.SetTrigger("atack1");
                 distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
                 if (distancefromPlayer > attackRange)
                 {
@@ -85,8 +82,6 @@ public class FireEnemy : EnemyBase
             case FireAI.death1:
                 break;
             case FireAI.death2:
-                animator.Play("death2");
-                animator.SetBool("run 0", false);
                 nmAgent.isStopped = true;
                 nmAgent.speed = 0;
                 break;

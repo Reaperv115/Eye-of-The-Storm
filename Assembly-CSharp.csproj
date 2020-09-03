@@ -60,8 +60,9 @@
     <Compile Include="Assets\MouseLook.cs" />
     <Compile Include="Assets\WeaponBase.cs" />
     <Compile Include="Assets\EnemyBase.cs" />
-    <Compile Include="Assets\AR.cs" />
     <Compile Include="Assets\SpawnPoint.cs" />
+    <Compile Include="Assets\AR.cs" />
+    <Compile Include="Assets\Weather.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Zombie\Materials\Standard_Two_Sided .shader" />
