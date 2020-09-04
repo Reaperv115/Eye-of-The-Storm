@@ -32,23 +32,22 @@ public class Weather : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int randomElement = Random.Range(0, elementColors.Length);
-        currentElement.color = elementColors[randomElement];
-        Resources.Load<GameObject>("Enemy").GetComponent<MeshRenderer>().material = currentElement;
+        //int randomElement = Random.Range(0, elementColors.Length);
+        //currentElement.color = elementColors[randomElement];
+        //Resources.Load<GameObject>("Enemy").GetComponent<MeshRenderer>().material = currentElement;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (elementTimer <= 0.0f)
-        {
-            elementTimer = 10.0f;
-            int randomElement = Random.Range(0, elementColors.Length);
-            currentElement.color = elementColors[randomElement];
-            GameObject.Find("Enemy(Clone)").GetComponent<MeshRenderer>().material = currentElement;
-        }
-        elementTimer -= Time.deltaTime;
-        Debug.Log(elementTimer);
+        //if (elementTimer <= 0.0f)
+        //{
+        //    elementTimer = 10.0f;
+        //    int randomElement = Random.Range(0, elementColors.Length);
+        //    currentElement.color = elementColors[randomElement];
+        //    GameObject.Find("Enemy(Clone)").GetComponent<MeshRenderer>().material = currentElement;
+        //}
+        //elementTimer -= Time.deltaTime;
         //currentElement.color = elementColors[(int)Elements.Fire];
         //GameObject.Find("Zombie(Clone)").GetComponent<MeshRenderer>().material.color = currentElement.color;
     }
