@@ -11,6 +11,10 @@ public class MouseLook : MonoBehaviour
 
     float xRotation = 0.0f;
 
+    
+    public Transform hand;
+    GameObject currentWeapon;
+
     // Start is called before the first frame update
     void Start()
     {
