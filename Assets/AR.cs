@@ -11,6 +11,8 @@ public class AR : WeaponBase
     Transform barrel;
 
     public LayerMask layermask;
+
+    
     GameObject currentWeapon;
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,7 @@ public class AR : WeaponBase
             transform.parent = collider.transform.Find("Main Camera").GetComponent<MouseLook>().hand;
             transform.position = collider.transform.Find("Main Camera").GetComponent<MouseLook>().hand.position;
             transform.rotation = collider.transform.Find("Main Camera").GetComponent<MouseLook>().hand.rotation;
+            collider.transform.Find("Main Camera").GetComponent<MouseLook>().currentWeapon = gameObject;
         }
     }
 }

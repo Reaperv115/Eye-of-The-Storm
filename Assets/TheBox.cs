@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TheBox : MonoBehaviour
 {
-    [SerializeField]
-    GameObject[] weapons;
+    
+    public GameObject[] weapons;
     [SerializeField]
     Transform startingPosition;
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class TheBox : MonoBehaviour
     {
         if (other.transform.name == "Player")
         {
-            int randomweaponIndex = Random.Range(0, weapons.Length);
+            int randomweaponIndex = Random.Range(0, weapons.Length - 1);
             Instantiate(weapons[randomweaponIndex], startingPosition.position, startingPosition.rotation);
         }
     }
