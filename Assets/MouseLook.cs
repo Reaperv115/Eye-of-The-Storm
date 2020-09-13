@@ -12,25 +12,15 @@ public class MouseLook : MonoBehaviour
     float xRotation = 0.0f;
 
     public Transform hand;
-    public GameObject currentWeapon;
+    public GameObject currentWeapon, previousWeapon;
 
-    public enum Weapons
-    {
-        AR = 0,
-        shotgun,
-        smg,
-        handgun,
-        rocketLauncher,
-        grenadeLauncher,
-        sniper,
-        energyHammer
-    } public Weapons weapons;
+    GameObject weapon;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        //currentWeapon = GameObject.Find("Mystery Box").GetComponent<TheBox>().weapons[4];
+        currentWeapon = GameObject.Find("Mystery Box").GetComponent<TheBox>().weapons[4];
         
     }
 
@@ -46,13 +36,15 @@ public class MouseLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
 
-        if (currentWeapon == null)
+        if (previousWeapon == null)
         {
-            currentWeapon = GameObject.Find("Mystery Box").GetComponent<TheBox>().weapons[4];
             currentWeapon.transform.position = hand.transform.position;
             currentWeapon.transform.rotation = hand.transform.rotation;
-            var weapon = Instantiate(currentWeapon, hand.transform.position, hand.transform.rotation);
-            weapon.transform.parent = hand;
+            currentWeapon = Instantiate(currentWeapon, hand.transform.position, hand.transform.rotation);
+            currentWeapon.transform.parent = hand;
         }
+
+        
+        
     }
 }

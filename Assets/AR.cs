@@ -12,8 +12,7 @@ public class AR : WeaponBase
 
     public LayerMask layermask;
 
-    
-    GameObject currentWeapon;
+    public bool didpickUp = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,9 +45,8 @@ public class AR : WeaponBase
         Debug.Log(collider.transform.tag);
         if (collider.transform.tag == "Player")
         {
-            transform.parent = collider.transform.Find("Main Camera").GetComponent<MouseLook>().hand;
-            transform.position = collider.transform.Find("Main Camera").GetComponent<MouseLook>().hand.position;
-            transform.rotation = collider.transform.Find("Main Camera").GetComponent<MouseLook>().hand.rotation;
+
+            collider.transform.Find("Main Camera").GetComponent<MouseLook>().previousWeapon = collider.transform.Find("Main Camera").GetComponent<MouseLook>().currentWeapon;
             collider.transform.Find("Main Camera").GetComponent<MouseLook>().currentWeapon = gameObject;
         }
     }

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3580972223022744074}
   - component: {fileID: 3580972223022744069}
   - component: {fileID: 3580972223022744068}
+  - component: {fileID: 2186759337192990800}
   m_Layer: 0
   m_Name: energy hammer
-  m_TagString: Untagged
+  m_TagString: melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3580972223022744070}
-  m_LocalRotation: {x: 0.24784137, y: -0.9687225, z: 0.003050112, w: -0.011921786}
-  m_LocalPosition: {x: 0.23900291, y: -0.24707866, z: -0.35499704}
+  m_LocalRotation: {x: -0.002342793, y: 0.9967687, z: 0.080159605, w: 0.0045912587}
+  m_LocalPosition: {x: 156.2508, y: 38.04576, z: 88.50136}
   m_LocalScale: {x: 1.802761, y: 0.13248605, z: 0.16314323}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,3 +96,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2186759337192990800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3580972223022744070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cfa0e01cc1c614780b3b74a9ab3e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
