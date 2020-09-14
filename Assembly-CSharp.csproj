@@ -65,6 +65,7 @@
     <Compile Include="Assets\SpawnPoint.cs" />
     <Compile Include="Assets\Weather.cs" />
     <Compile Include="Assets\AR.cs" />
+    <Compile Include="Assets\smg.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7425396882523669151}
   - component: {fileID: 5868244392685447081}
-  - component: {fileID: -7384349806818104789}
+  - component: {fileID: -5564051641237437859}
   m_Layer: 0
   m_Name: Skorpion VZ
   m_TagString: firearm
@@ -209,7 +209,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.5271683}
   m_Center: {x: 0, y: 0, z: 0.011264801}
---- !u!114 &-7384349806818104789
+--- !u!114 &-5564051641237437859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,10 +218,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7425396882523446975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8535ffce3bdb9da438f39e9b3a1c1a74, type: 3}
+  m_Script: {fileID: 11500000, guid: 7739f556fcc325a41ba270449ac92eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrel: {fileID: 0}
-  layermask:
-    serializedVersion: 2
-    m_Bits: 0

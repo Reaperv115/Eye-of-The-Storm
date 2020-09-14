@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6132222533095132242}
   - component: {fileID: 2095795013732042824}
-  - component: {fileID: 8918707141988100916}
+  - component: {fileID: -3666965625214112037}
   m_Layer: 0
   m_Name: UMP-45
   m_TagString: firearm
@@ -129,7 +129,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1.4739532}
   m_Center: {x: 0, y: 0, z: -0.10434723}
---- !u!114 &8918707141988100916
+--- !u!114 &-3666965625214112037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,13 +138,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6132222533095624818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8535ffce3bdb9da438f39e9b3a1c1a74, type: 3}
+  m_Script: {fileID: 11500000, guid: 7739f556fcc325a41ba270449ac92eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrel: {fileID: 0}
-  layermask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6132222533095624822
 GameObject:
   m_ObjectHideFlags: 0
