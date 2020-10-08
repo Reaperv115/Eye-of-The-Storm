@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class TheBox : MonoBehaviour
 {
-    
-    public List<GameObject> boxWeapons;
-    public List<GameObject> arsenal;
+    [SerializeField]
+    List<GameObject> boxWeapons;
     [SerializeField]
     Transform startingPosition;
+
+    public GameObject randomweapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +24,11 @@ public class TheBox : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.transform.name == "Player")
+        if (other.transform.CompareTag("Player"))
         {
-            int randomweaponIndex = Random.Range(0, boxWeapons.Count - 1);
-            Instantiate(boxWeapons[randomweaponIndex], startingPosition.position, startingPosition.rotation);
+            int randomweaponIndex = Random.Range(0, boxWeapons.Count);
+            boxWeapons[randomweaponIndex].SetActive(true);
+            randomweapon = Instantiate(boxWeapons[randomweaponIndex], startingPosition.position, startingPosition.rotation);
         }
     }
 }

@@ -61,11 +61,12 @@
     <Compile Include="Assets\PlayerMovement.cs" />
     <Compile Include="Assets\MouseLook.cs" />
     <Compile Include="Assets\WeaponBase.cs" />
+    <Compile Include="Assets\smg.cs" />
     <Compile Include="Assets\EnemyBase.cs" />
     <Compile Include="Assets\SpawnPoint.cs" />
     <Compile Include="Assets\Weather.cs" />
     <Compile Include="Assets\AR.cs" />
-    <Compile Include="Assets\smg.cs" />
+    <Compile Include="Assets\Arsenal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

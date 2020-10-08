@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
-    protected float ammo, maxAmmo, damage;
+    protected float maxAmmo, damage;
+    public float ammo;
 }
