@@ -5838,14 +5838,14 @@ PrefabInstance:
     - target: {fileID: 8242804000201444386, guid: 6996fac3c5c596d4fa2de4e2b2e9bf6e, type: 3}
       propertyPath: boxWeapons.Array.data[4]
       value: 
-      objectReference: {fileID: 8196137624549176986, guid: 6e0b3ff9f09a84540b05aae29d907083, type: 3}
+      objectReference: {fileID: 7999281337761367325, guid: e4afe05034d3ba84d925c2ed821f9867, type: 3}
     - target: {fileID: 8242804000201444386, guid: 6996fac3c5c596d4fa2de4e2b2e9bf6e, type: 3}
       propertyPath: boxWeapons.Array.data[5]
       value: 
-      objectReference: {fileID: 6446296187150837870, guid: 9300b0a9258bfba42ab39752b6e72fd3, type: 3}
+      objectReference: {fileID: 3764178667058338724, guid: b7dd3ad6b27708d4fb0fb269e1432efa, type: 3}
     - target: {fileID: 8242804000201444386, guid: 6996fac3c5c596d4fa2de4e2b2e9bf6e, type: 3}
       propertyPath: boxWeapons.Array.data[6]
       value: 
-      objectReference: {fileID: 7425396882523446975, guid: df263f33805cb684e9c665a6f36fab77, type: 3}
+      objectReference: {fileID: 8247008582824038708, guid: a957238a74a78454f80da26b809a8cec, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6996fac3c5c596d4fa2de4e2b2e9bf6e, type: 3}
