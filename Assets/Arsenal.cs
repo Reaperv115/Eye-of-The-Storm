@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -31,6 +32,33 @@ public class Arsenal : MonoBehaviour
         {
             currentWeapon.transform.position = hand.position;
             currentWeapon.transform.rotation = hand.rotation;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        {
+            if (weaponIndex == arsenal.Length - 1)
+            {
+                weaponIndex = 0;
+                currentWeapon = arsenal[weaponIndex];
+            }
+            else
+            {
+                weaponIndex++;
+                currentWeapon = arsenal[weaponIndex];
+            }
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            if (weaponIndex == 0)
+            {
+                weaponIndex = arsenal.Length - 1;
+                currentWeapon = arsenal[weaponIndex];
+            }
+            else
+            {
+                weaponIndex--;
+                currentWeapon = arsenal[weaponIndex];
+            }
         }
 
         foreach(GameObject weapon in arsenal)
