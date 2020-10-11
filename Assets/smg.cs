@@ -16,6 +16,7 @@ public class smg : WeaponBase
 
     TextMeshProUGUI ammoTracker;
     TextMeshProUGUI reloadIndicator;
+    TextMeshProUGUI noAmmo;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,10 @@ public class smg : WeaponBase
         damage = 100f;
         magCapacity = 30f;
         ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
+        noAmmo = GameObject.Find("no ammo").GetComponent<TextMeshProUGUI>();
         reloadIndicator = GameObject.Find("reload indicator").GetComponent<TextMeshProUGUI>();
         reloadIndicator.text = "";
+        hasAmmo = true;
     }
 
     // Update is called once per frame
@@ -33,34 +36,58 @@ public class smg : WeaponBase
     {
         ammoTracker.text = ammo + "/" + maxAmmo;
 
-        if (Input.GetKey(KeyCode.R))
+        if (ammo <= 0f && maxAmmo <= 0f)
         {
-            maxAmmo -= (magCapacity - ammo);
-            ammo = magCapacity;
-            reloadIndicator.text = "";
+            hasAmmo = false;
         }
 
-        if (Input.GetMouseButton(0))
+        if (!hasAmmo)
         {
-            if (ammo <= 0.0f)
+            noAmmo.text = "NO AMMO";
+            reloadIndicator.text = "";
+        }
+        else
+        {
+
+
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                reloadIndicator.text = "Reload!";
-            }
-            else
-            {
-                --ammo;
-                ray = new Ray(barrel.position, barrel.forward);
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layermask))
+                if (maxAmmo - magCapacity <= 0f)
                 {
-                    Debug.Log(hit.transform.name);
-                    if (hit.transform.name.Contains("o"))
+                    maxAmmo = 0f;
+                    ammo += (magCapacity - ammo);
+                }
+                else
+                {
+                    maxAmmo -= (magCapacity - ammo);
+                    ammo = magCapacity;
+                }
+
+                reloadIndicator.text = "";
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                if (ammo <= 0f)
+                {
+                    reloadIndicator.text = "Reload!";
+                }
+                else
+                {
+                    --ammo;
+                    ray = new Ray(barrel.position, barrel.forward);
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layermask))
                     {
-                        hit.transform.gameObject.GetComponent<FireEnemy>().takeDamage(damage);
-                        Debug.Log("enemy hit");
+                        Debug.Log(hit.transform.name);
+                        if (hit.transform.name.Contains("o"))
+                        {
+                            hit.transform.gameObject.GetComponent<FireEnemy>().takeDamage(damage);
+                            Debug.Log("enemy hit");
+                        }
                     }
                 }
+
             }
-            
         }
     }
 

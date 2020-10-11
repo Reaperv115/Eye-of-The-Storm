@@ -14,22 +14,22 @@ public class SpawnPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pointtospawnAt = Random.Range(0, spawnpoints.Length);
-        Instantiate(enemy, spawnpoints[pointtospawnAt].position, transform.rotation);
-        spawnTimer = 2.0f;
+        //pointtospawnAt = Random.Range(0, spawnpoints.Length);
+        //Instantiate(enemy, spawnpoints[pointtospawnAt].position, transform.rotation);
+        //spawnTimer = 2.0f;
         Debug.Log(spawnpoints.Length);
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawnTimer -= Time.deltaTime;
-        if (spawnTimer <= 0.0f)
-        {
-            Instantiate(enemy, spawnpoints[11].transform.position, transform.rotation);
-            pointtospawnAt = Random.Range(0, spawnpoints.Length);
-            Instantiate(enemy, spawnpoints[pointtospawnAt].transform.position, transform.rotation);
-            spawnTimer = 2.0f;
-        }
+        //spawnTimer -= Time.deltaTime;
+        //if (spawnTimer <= 0.0f)
+        //{
+        //    Instantiate(enemy, spawnpoints[11].transform.position, transform.rotation);
+        //    pointtospawnAt = Random.Range(0, spawnpoints.Length);
+        //    Instantiate(enemy, spawnpoints[pointtospawnAt].transform.position, transform.rotation);
+        //    spawnTimer = 2.0f;
+        //}
     }
 }
