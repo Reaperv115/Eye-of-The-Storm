@@ -14,17 +14,17 @@ public class smg : WeaponBase
 
     public LayerMask layermask;
 
-    TextMeshProUGUI ammoTracker;
+    //TextMeshProUGUI ammoTracker;
     TextMeshProUGUI reloadIndicator;
     TextMeshProUGUI noAmmo;
     // Start is called before the first frame update
     void Start()
     {
-        ammo = 30f;
-        maxAmmo = 190f;
+        ammo = 15f;
+        maxAmmo = 120f;
         damage = 100f;
         magCapacity = 30f;
-        ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
+        //ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
         noAmmo = GameObject.Find("no ammo").GetComponent<TextMeshProUGUI>();
         reloadIndicator = GameObject.Find("reload indicator").GetComponent<TextMeshProUGUI>();
         reloadIndicator.text = "";
@@ -34,7 +34,7 @@ public class smg : WeaponBase
     // Update is called once per frame
     void Update()
     {
-        ammoTracker.text = ammo + "/" + maxAmmo;
+        //ammoTracker.text = ammo + "/" + maxAmmo;
 
         if (ammo <= 0f && maxAmmo <= 0f)
         {

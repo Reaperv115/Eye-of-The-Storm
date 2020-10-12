@@ -1244,6 +1244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 0
+  maxAmmo: 0
   barrel: {fileID: 4274677720871846779}
   layermask:
     serializedVersion: 2

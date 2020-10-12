@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 0
+  maxAmmo: 0
   barrel: {fileID: 3601091491080552044}
   layermask:
     serializedVersion: 2

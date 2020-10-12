@@ -14,6 +14,8 @@ public class Arsenal : MonoBehaviour
     public int weaponIndex = 0;
     public int selectedWeapon;
 
+    TextMeshProUGUI ammoTracker;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,18 +23,22 @@ public class Arsenal : MonoBehaviour
         currentWeapon = Resources.Load<GameObject>("energy hammer");
         currentWeapon = Instantiate(currentWeapon, hand.transform.position, hand.transform.rotation, hand);
         arsenal[weaponIndex] = currentWeapon;
-
+        ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
         Debug.Log(arsenal.Length);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         if (currentWeapon)
         {
             currentWeapon.transform.position = hand.position;
             currentWeapon.transform.rotation = hand.rotation;
         }
+
+        
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
@@ -40,11 +46,33 @@ public class Arsenal : MonoBehaviour
             {
                 weaponIndex = 0;
                 currentWeapon = arsenal[weaponIndex];
+                if (currentWeapon)
+                {
+                    if (currentWeapon.GetComponent<AR>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
+                    }
+                    else
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                    }
+                }
             }
             else
             {
                 weaponIndex++;
                 currentWeapon = arsenal[weaponIndex];
+                if (currentWeapon)
+                {
+                    if (currentWeapon.GetComponent<AR>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
+                    }
+                    else
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                    }
+                }
             }
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
@@ -53,11 +81,47 @@ public class Arsenal : MonoBehaviour
             {
                 weaponIndex = arsenal.Length - 1;
                 currentWeapon = arsenal[weaponIndex];
+                if (currentWeapon)
+                {
+                    if (currentWeapon.GetComponent<AR>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
+                    }
+                    else
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                    }
+                }
             }
             else
             {
                 weaponIndex--;
                 currentWeapon = arsenal[weaponIndex];
+                if (currentWeapon)
+                {
+                    if (currentWeapon.GetComponent<AR>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
+                    }
+                    else
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (currentWeapon)
+            {
+                if (currentWeapon.GetComponent<AR>())
+                {
+                    ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
+                }
+                else
+                {
+                    ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                }
             }
         }
 
@@ -94,12 +158,12 @@ public class Arsenal : MonoBehaviour
                 {
                     if (other.gameObject.GetComponent<smg>())
                     {
-                        ++other.GetComponent<smg>().ammo;
+                        ++arsenal[i].GetComponent<smg>().ammo;
                         Destroy(other.gameObject);
                     }
                     else
                     {
-                        ++other.GetComponent<AR>().ammo;
+                        ++arsenal[i].GetComponent<AR>().ammo;
                         Destroy(other.gameObject);
                     }
                     break;
