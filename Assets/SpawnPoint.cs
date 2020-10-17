@@ -17,7 +17,7 @@ public class SpawnPoint : MonoBehaviour
         //pointtospawnAt = Random.Range(0, spawnpoints.Length);
         //Instantiate(enemy, spawnpoints[pointtospawnAt].position, transform.rotation);
         //spawnTimer = 2.0f;
-        Debug.Log(spawnpoints.Length);
+        //Debug.Log(spawnpoints.Length);
     }
 
     // Update is called once per frame

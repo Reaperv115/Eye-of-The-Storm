@@ -36,6 +36,7 @@ public class FireEnemy : EnemyBase
         health = 100f;
         speed = 5f;
         armor = 0f;
+        damage = 25f;
         nmAgent = GetComponent<NavMeshAgent>();
         nmAgent.speed = speed;
         animator = GetComponent<Animator>();
@@ -69,6 +70,7 @@ public class FireEnemy : EnemyBase
             case FireAI.attack1:
                 nmAgent.isStopped = true;
                 nmAgent.speed = 0;
+                target.GetComponent<PlayerHealth>().setHealth(damage);
                 distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
                 if (distancefromPlayer > attackRange)
                 {
@@ -78,12 +80,16 @@ public class FireEnemy : EnemyBase
             case FireAI.attack2:
                 break;
             case FireAI.gethit:
+                health -= damage;
+                if (health <= 0.0f)
+                {
+                    fAI = FireAI.death2;
+                }
                 break;
             case FireAI.death1:
                 break;
             case FireAI.death2:
-                nmAgent.isStopped = true;
-                nmAgent.speed = 0;
+                Destroy(gameObject);
                 break;
             default:
                 break;

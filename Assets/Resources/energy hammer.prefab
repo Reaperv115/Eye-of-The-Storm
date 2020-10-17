@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2320026048893685355}
   - component: {fileID: 3324806072348231643}
   - component: {fileID: 7708657066961696928}
-  - component: {fileID: 1515740882526645544}
+  - component: {fileID: 5338153788350587864}
   m_Layer: 0
   m_Name: energy hammer
   m_TagString: melee
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1515740882526645544
+--- !u!114 &5338153788350587864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,15 +106,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 278714478789653703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7739f556fcc325a41ba270449ac92eee, type: 3}
+  m_Script: {fileID: 11500000, guid: 81cfa0e01cc1c614780b3b74a9ab3e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 0
-  maxAmmo: 0
-  barrel: {fileID: 5724528240213002289}
-  layermask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &8501351394523607914
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,3 +67,11 @@ The following packages were added:
   com.unity.postprocessing@2.3.0
   com.unity.purchasing@2.0.3
   com.unity.rendering.hybrid@0.0.1-preview.4
+
+=== Mon Oct 12 23:50:59 2020
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were removed:
+  com.unity.package-manager-ui@2.2.0

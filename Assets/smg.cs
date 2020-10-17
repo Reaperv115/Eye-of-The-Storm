@@ -36,6 +36,8 @@ public class smg : WeaponBase
     {
         //ammoTracker.text = ammo + "/" + maxAmmo;
 
+        Debug.DrawRay(barrel.position, barrel.forward);
+
         if (ammo <= 0f && maxAmmo <= 0f)
         {
             hasAmmo = false;
@@ -79,9 +81,9 @@ public class smg : WeaponBase
                     if (Physics.Raycast(ray, out hit, Mathf.Infinity, layermask))
                     {
                         Debug.Log(hit.transform.name);
-                        if (hit.transform.name.Contains("o"))
+                        if (hit.transform.name.Contains("e"))
                         {
-                            hit.transform.gameObject.GetComponent<FireEnemy>().takeDamage(damage);
+                            hit.transform.gameObject.GetComponent<FireEnemy>().fAI = FireEnemy.FireAI.gethit;
                             Debug.Log("enemy hit");
                         }
                     }

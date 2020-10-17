@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Arsenal : MonoBehaviour
 {
@@ -34,8 +35,19 @@ public class Arsenal : MonoBehaviour
 
         if (currentWeapon)
         {
-            currentWeapon.transform.position = hand.position;
-            currentWeapon.transform.rotation = hand.rotation;
+            if (currentWeapon.GetComponent<shotgun>())
+            {
+                Quaternion weaponRotation = currentWeapon.transform.rotation;
+                weaponRotation = Quaternion.Euler(new Vector3(0.0f, 90f, 0.0f));
+                currentWeapon.transform.rotation = weaponRotation;
+                currentWeapon.transform.position = hand.position;
+            }
+            else
+            {
+
+                currentWeapon.transform.position = hand.position;
+                currentWeapon.transform.rotation = hand.rotation;
+            }
         }
 
         
@@ -52,9 +64,29 @@ public class Arsenal : MonoBehaviour
                     {
                         ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
                     }
-                    else
+                    if (currentWeapon.GetComponent<smg>())
                     {
                         ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<RocketLauncher>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<RocketLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<RocketLauncher>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<GrenadeLauncher>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<GrenadeLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<GrenadeLauncher>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<pistol>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<pistol>().ammo.ToString() + '/' + currentWeapon.GetComponent<pistol>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<shotgun>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<shotgun>().ammo.ToString() + '/' + currentWeapon.GetComponent<shotgun>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<SniperRifle>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<SniperRifle>().ammo.ToString() + '/' + currentWeapon.GetComponent<SniperRifle>().maxAmmo.ToString();
                     }
                 }
             }
@@ -68,9 +100,29 @@ public class Arsenal : MonoBehaviour
                     {
                         ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
                     }
-                    else
+                    if (currentWeapon.GetComponent<smg>())
                     {
                         ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<RocketLauncher>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<RocketLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<RocketLauncher>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<GrenadeLauncher>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<GrenadeLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<GrenadeLauncher>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<pistol>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<pistol>().ammo.ToString() + '/' + currentWeapon.GetComponent<pistol>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<shotgun>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<shotgun>().ammo.ToString() + '/' + currentWeapon.GetComponent<shotgun>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<SniperRifle>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<SniperRifle>().ammo.ToString() + '/' + currentWeapon.GetComponent<SniperRifle>().maxAmmo.ToString();
                     }
                 }
             }
@@ -87,9 +139,29 @@ public class Arsenal : MonoBehaviour
                     {
                         ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
                     }
-                    else
+                    if (currentWeapon.GetComponent<smg>())
                     {
                         ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<RocketLauncher>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<RocketLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<RocketLauncher>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<GrenadeLauncher>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<GrenadeLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<GrenadeLauncher>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<pistol>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<pistol>().ammo.ToString() + '/' + currentWeapon.GetComponent<pistol>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<shotgun>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<shotgun>().ammo.ToString() + '/' + currentWeapon.GetComponent<shotgun>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<SniperRifle>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<SniperRifle>().ammo.ToString() + '/' + currentWeapon.GetComponent<SniperRifle>().maxAmmo.ToString();
                     }
                 }
             }
@@ -103,9 +175,29 @@ public class Arsenal : MonoBehaviour
                     {
                         ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
                     }
-                    else
+                    if (currentWeapon.GetComponent<smg>())
                     {
                         ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<RocketLauncher>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<RocketLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<RocketLauncher>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<GrenadeLauncher>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<GrenadeLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<GrenadeLauncher>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<pistol>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<pistol>().ammo.ToString() + '/' + currentWeapon.GetComponent<pistol>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<shotgun>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<shotgun>().ammo.ToString() + '/' + currentWeapon.GetComponent<shotgun>().maxAmmo.ToString();
+                    }
+                    if (currentWeapon.GetComponent<SniperRifle>())
+                    {
+                        ammoTracker.text = currentWeapon.GetComponent<SniperRifle>().ammo.ToString() + '/' + currentWeapon.GetComponent<SniperRifle>().maxAmmo.ToString();
                     }
                 }
             }
@@ -118,9 +210,29 @@ public class Arsenal : MonoBehaviour
                 {
                     ammoTracker.text = currentWeapon.GetComponent<AR>().ammo.ToString() + '/' + currentWeapon.GetComponent<AR>().maxAmmo.ToString();
                 }
-                else
+                if (currentWeapon.GetComponent<smg>())
                 {
                     ammoTracker.text = currentWeapon.GetComponent<smg>().ammo.ToString() + '/' + currentWeapon.GetComponent<smg>().maxAmmo.ToString();
+                }
+                if (currentWeapon.GetComponent<RocketLauncher>())
+                {
+                    ammoTracker.text = currentWeapon.GetComponent<RocketLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<RocketLauncher>().maxAmmo.ToString();
+                }
+                if (currentWeapon.GetComponent<GrenadeLauncher>())
+                {
+                    ammoTracker.text = currentWeapon.GetComponent<GrenadeLauncher>().ammo.ToString() + '/' + currentWeapon.GetComponent<GrenadeLauncher>().maxAmmo.ToString();
+                }
+                if (currentWeapon.GetComponent<pistol>())
+                {
+                    ammoTracker.text = currentWeapon.GetComponent<pistol>().ammo.ToString() + '/' + currentWeapon.GetComponent<pistol>().maxAmmo.ToString();
+                }
+                if (currentWeapon.GetComponent<shotgun>())
+                {
+                    ammoTracker.text = currentWeapon.GetComponent<shotgun>().ammo.ToString() + '/' + currentWeapon.GetComponent<shotgun>().maxAmmo.ToString();
+                }
+                if (currentWeapon.GetComponent<SniperRifle>())
+                {
+                    ammoTracker.text = currentWeapon.GetComponent<SniperRifle>().ammo.ToString() + '/' + currentWeapon.GetComponent<SniperRifle>().maxAmmo.ToString();
                 }
             }
         }
@@ -142,7 +254,14 @@ public class Arsenal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<smg>() || other.gameObject.GetComponent<AR>())
+
+        if (other.gameObject.GetComponent<smg>()              ||
+            other.gameObject.GetComponent<AR>()               ||
+            other.gameObject.GetComponent<shotgun>()          ||
+            other.gameObject.GetComponent<SniperRifle>()      ||
+            other.gameObject.GetComponent<pistol>()           ||
+            other.gameObject.GetComponent<RocketLauncher>()   ||
+            other.gameObject.GetComponent<GrenadeLauncher>())
         {
             for (int i = 0; i < arsenal.Length; ++i)
             {
@@ -151,6 +270,7 @@ public class Arsenal : MonoBehaviour
                     weaponIndex = i;
                     arsenal[weaponIndex] = other.gameObject;
                     currentWeapon = arsenal[weaponIndex];
+                    currentWeapon.GetComponent<BoxCollider>().enabled = false;
                     break;
 
                 }
@@ -161,9 +281,34 @@ public class Arsenal : MonoBehaviour
                         ++arsenal[i].GetComponent<smg>().ammo;
                         Destroy(other.gameObject);
                     }
-                    else
+                    if (other.gameObject.GetComponent<SniperRifle>())
+                    {
+                        ++arsenal[i].GetComponent<SniperRifle>().ammo;
+                        Destroy(other.gameObject);
+                    }
+                    if (other.gameObject.GetComponent<shotgun>())
+                    {
+                        ++arsenal[i].GetComponent<shotgun>().ammo;
+                        Destroy(other.gameObject);
+                    }
+                    if (other.gameObject.GetComponent<RocketLauncher>())
+                    {
+                        ++arsenal[i].GetComponent<RocketLauncher>().ammo;
+                        Destroy(other.gameObject);
+                    }
+                    if (other.gameObject.GetComponent<pistol>())
+                    {
+                        ++arsenal[i].GetComponent<pistol>().ammo;
+                        Destroy(other.gameObject);
+                    }
+                    if (other.gameObject.GetComponent<AR>())
                     {
                         ++arsenal[i].GetComponent<AR>().ammo;
+                        Destroy(other.gameObject);
+                    }
+                    if (other.gameObject.GetComponent<GrenadeLauncher>())
+                    {
+                        ++arsenal[i].GetComponent<GrenadeLauncher>().ammo;
                         Destroy(other.gameObject);
                     }
                     break;

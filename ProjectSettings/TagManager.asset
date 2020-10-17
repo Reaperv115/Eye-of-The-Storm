@@ -8,6 +8,13 @@ TagManager:
   - enemy
   - firearm
   - melee
+  - powerup
+  - assault rifle
+  - pistol
+  - rocket launcher
+  - shotgun
+  - sniper rifle
+  - smg
   layers:
   - Default
   - TransparentFX
