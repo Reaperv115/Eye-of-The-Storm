@@ -15,6 +15,7 @@ TagManager:
   - shotgun
   - sniper rifle
   - smg
+  - grenade launcher
   layers:
   - Default
   - TransparentFX

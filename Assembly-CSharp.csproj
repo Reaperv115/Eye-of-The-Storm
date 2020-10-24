@@ -56,27 +56,26 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EnergyHammer.cs" />
-    <Compile Include="Assets\TheBox.cs" />
-    <Compile Include="Assets\PlayerHealth.cs" />
-    <Compile Include="Assets\FireEnemy.cs" />
-    <Compile Include="Assets\PlayerMovement.cs" />
-    <Compile Include="Assets\MouseLook.cs" />
-    <Compile Include="Assets\SniperRifle.cs" />
-    <Compile Include="Assets\WeaponBase.cs" />
-    <Compile Include="Assets\Fantasy Weapon free pack\SceneControl.cs" />
-    <Compile Include="Assets\smg.cs" />
-    <Compile Include="Assets\GrenadeLauncher.cs" />
-    <Compile Include="Assets\ExtraDamage.cs" />
-    <Compile Include="Assets\EnemyBase.cs" />
-    <Compile Include="Assets\SpawnPoint.cs" />
-    <Compile Include="Assets\Weather.cs" />
-    <Compile Include="Assets\shotgun.cs" />
-    <Compile Include="Assets\Arsenal.cs" />
-    <Compile Include="Assets\PowerUpsBase.cs" />
-    <Compile Include="Assets\pistol.cs" />
-    <Compile Include="Assets\AR.cs" />
-    <Compile Include="Assets\RocketLauncher.cs" />
+    <Compile Include="Assets\Scripts\EnergyHammer.cs" />
+    <Compile Include="Assets\Scripts\TheBox.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\RocketLauncher.cs" />
+    <Compile Include="Assets\Scripts\FireEnemy.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\SniperRifle.cs" />
+    <Compile Include="Assets\Scripts\WeaponBase.cs" />
+    <Compile Include="Assets\Scripts\smg.cs" />
+    <Compile Include="Assets\Scripts\GrenadeLauncher.cs" />
+    <Compile Include="Assets\Scripts\ExtraDamage.cs" />
+    <Compile Include="Assets\Scripts\EnemyBase.cs" />
+    <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+    <Compile Include="Assets\Scripts\Weather.cs" />
+    <Compile Include="Assets\Scripts\shotgun.cs" />
+    <Compile Include="Assets\Scripts\Arsenal.cs" />
+    <Compile Include="Assets\Scripts\PowerUpsBase.cs" />
+    <Compile Include="Assets\Scripts\pistol.cs" />
+    <Compile Include="Assets\Scripts\AR.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -84,7 +83,6 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-     <None Include="Assets\Fantasy Weapon free pack\WeaponsReadMe.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
