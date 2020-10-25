@@ -16,6 +16,7 @@ public class Arsenal : MonoBehaviour
     public int weaponIndex = 0;
     public int selectedWeapon = 0;
     int previousWeapon;
+    int lastvalidSpot = 0;
 
     TextMeshProUGUI ammoTracker;
 
@@ -26,46 +27,50 @@ public class Arsenal : MonoBehaviour
         currentWeapon = Resources.Load<GameObject>("energy hammer");
         currentWeapon = Instantiate(currentWeapon, hand.transform.position, hand.transform.rotation, hand);
         arsenal[weaponIndex] = currentWeapon;
-        previousWeapon = selectedWeapon = weaponIndex;
+        lastvalidSpot = previousWeapon = weaponIndex;
         ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
         selectWeapon();
-        Debug.Log(arsenal.Length);
+        //Debug.Log(arsenal.Length);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        Debug.Log(currentWeapon);
+        Debug.Log(weaponIndex);
 
         //previousWeapon = selectedWeapon;
 
         //scroll through arsenal
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            if (selectedWeapon >= arsenal.Count() - 1)
+            if (weaponIndex >= arsenal.Count() - 1 || arsenal[weaponIndex + 1] == null)
             {
-                selectedWeapon = 0;
+                previousWeapon = weaponIndex;
+                weaponIndex = 0;
             }
             else
             {
-                selectedWeapon++;
+                previousWeapon = weaponIndex;
+                weaponIndex++;
             }
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            if (selectedWeapon <= 0)
+            if (weaponIndex <= 0)
             {
-                selectedWeapon = arsenal.Count() - 1;
+                previousWeapon = weaponIndex;
+                weaponIndex = lastvalidSpot;
             }
             else
             {
-                selectedWeapon--;
+                previousWeapon = weaponIndex;
+                weaponIndex--;
             }
 
         }
 
-        if (previousWeapon != selectedWeapon)
+        if (previousWeapon != weaponIndex)
         {
             selectWeapon();
         }
@@ -88,13 +93,13 @@ public class Arsenal : MonoBehaviour
                 if (arsenal[i] == null)
                 {
                     weaponIndex = i;
+                    lastvalidSpot = weaponIndex;
                     arsenal[weaponIndex] = other.gameObject;
                     currentWeapon = arsenal[weaponIndex];
                     currentWeapon.GetComponent<BoxCollider>().enabled = false;
                     currentWeapon.transform.position = hand.position;
                     currentWeapon.transform.rotation = hand.rotation;
                     currentWeapon.transform.SetParent(hand);
-                    selectedWeapon = weaponIndex;
                     break;
 
                 }
@@ -148,7 +153,7 @@ public class Arsenal : MonoBehaviour
         {
             if (weapon)
             {
-                if (i == selectedWeapon)
+                if (i == weaponIndex)
                 {
                     weapon.SetActive(true);
                     currentWeapon = weapon.gameObject;
