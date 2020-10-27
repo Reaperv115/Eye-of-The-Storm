@@ -82,7 +82,7 @@ MonoBehaviour:
   barrel: {fileID: 6565992411412509374}
   layermask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!65 &269901226562213311
 BoxCollider:
   m_ObjectHideFlags: 0

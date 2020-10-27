@@ -70,7 +70,7 @@ public class FireEnemy : EnemyBase
             case FireAI.attack1:
                 nmAgent.isStopped = true;
                 nmAgent.speed = 0;
-                target.GetComponent<PlayerHealth>().setHealth(damage);
+                //target.GetComponent<PlayerHealth>().setHealth(damage);
                 distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
                 if (distancefromPlayer > attackRange)
                 {

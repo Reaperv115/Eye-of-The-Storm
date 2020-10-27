@@ -29,12 +29,13 @@ public class GrenadeLauncher : WeaponBase
         noAmmo = GameObject.Find("no ammo").GetComponent<TextMeshProUGUI>();
         reloadIndicator.text = "";
         hasAmmo = true;
+        range = 150;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(barrel.position, barrel.forward * Mathf.Infinity);
+        Debug.DrawRay(barrel.position, barrel.forward * range);
 
         if (ammo <= 0f && maxAmmo <= 0f)
         {
@@ -75,13 +76,14 @@ public class GrenadeLauncher : WeaponBase
                 else
                 {
                     --ammo;
-                    ray = new Ray(barrel.position, barrel.forward);
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layermask))
+                    ray = new Ray(barrel.position, barrel.forward * range);
+                    if (Physics.Raycast(ray, out hit, range, layermask))
                     {
                         Debug.Log(hit.transform.name);
                         if (hit.transform.name.Contains("e"))
                         {
-                            hit.transform.gameObject.GetComponent<FireEnemy>().fAI = FireEnemy.FireAI.gethit;
+                            Destroy(hit.transform.gameObject);
+                            //hit.transform.gameObject.GetComponent<FireEnemy>().fAI = FireEnemy.FireAI.gethit;
                             Debug.Log("enemy hit");
                         }
                     }

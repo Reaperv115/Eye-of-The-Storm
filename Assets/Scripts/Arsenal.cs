@@ -37,7 +37,7 @@ public class Arsenal : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(weaponIndex);
+        //Debug.Log(weaponIndex);
 
         //previousWeapon = selectedWeapon;
 

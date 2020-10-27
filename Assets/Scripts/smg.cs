@@ -29,6 +29,7 @@ public class smg : WeaponBase
         reloadIndicator = GameObject.Find("reload indicator").GetComponent<TextMeshProUGUI>();
         reloadIndicator.text = "";
         hasAmmo = true;
+        range = 150;
     }
 
     // Update is called once per frame
@@ -36,7 +37,7 @@ public class smg : WeaponBase
     {
         //ammoTracker.text = ammo + "/" + maxAmmo;
 
-        Debug.DrawRay(barrel.position, barrel.forward);
+        Debug.DrawRay(barrel.position, barrel.forward * range);
 
         if (ammo <= 0f && maxAmmo <= 0f)
         {
@@ -77,13 +78,14 @@ public class smg : WeaponBase
                 else
                 {
                     --ammo;
-                    ray = new Ray(barrel.position, barrel.forward);
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layermask))
+                    ray = new Ray(barrel.position, barrel.forward * range);
+                    if (Physics.Raycast(ray, out hit, range, layermask))
                     {
                         Debug.Log(hit.transform.name);
                         if (hit.transform.name.Contains("e"))
                         {
-                            hit.transform.gameObject.GetComponent<FireEnemy>().fAI = FireEnemy.FireAI.gethit;
+                            Destroy(hit.transform.gameObject);
+                            //hit.transform.gameObject.GetComponent<FireEnemy>().fAI = FireEnemy.FireAI.gethit;
                             Debug.Log("enemy hit");
                         }
                     }

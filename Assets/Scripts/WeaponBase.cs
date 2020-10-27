@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
-    protected float damage, magCapacity;
+    protected float damage, magCapacity, range;
     protected bool hasAmmo;
     public float ammo, maxAmmo;
 }

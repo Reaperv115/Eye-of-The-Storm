@@ -144,4 +144,4 @@ MonoBehaviour:
   barrel: {fileID: 2775435299376833733}
   layermask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
