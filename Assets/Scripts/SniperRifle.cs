@@ -12,7 +12,7 @@ public class SniperRifle : WeaponBase
     [SerializeField]
     Transform barrel;
 
-    //TextMeshProUGUI ammoTracker;
+    TextMeshProUGUI ammoTracker;
     TextMeshProUGUI reloadIndicator;
     TextMeshProUGUI noAmmo;
 
@@ -24,7 +24,7 @@ public class SniperRifle : WeaponBase
         maxAmmo = 190f;
         weaponDamage = 100f;
         magCapacity = 30f;
-        //ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
+        ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
         reloadIndicator = GameObject.Find("reload indicator").GetComponent<TextMeshProUGUI>();
         noAmmo = GameObject.Find("no ammo").GetComponent<TextMeshProUGUI>();
         reloadIndicator.text = "";
@@ -36,6 +36,8 @@ public class SniperRifle : WeaponBase
     void Update()
     {
         Debug.DrawRay(barrel.position, barrel.forward * range);
+
+        ammoTracker.text = ammo + "/" + maxAmmo;
 
         if (ammo <= 0f && maxAmmo <= 0f)
         {

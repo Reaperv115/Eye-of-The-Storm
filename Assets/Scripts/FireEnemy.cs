@@ -143,6 +143,14 @@ public class FireEnemy : EnemyBase
                     }
                     break;
                 }
+                if (target.GetComponent<EnergyHammer>())
+                {
+                    health -= target.GetComponent<EnergyHammer>().weaponDamage;
+                    if (health <= 0.0f)
+                    {
+                        fAI = FireAI.death2;
+                    }
+                }
                 break;
                 
             case FireAI.death1:
