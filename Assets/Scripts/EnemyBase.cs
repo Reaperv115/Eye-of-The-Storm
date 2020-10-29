@@ -6,7 +6,8 @@ public class EnemyBase : MonoBehaviour
     protected float speed;
     protected float distancefromPlayer;
     protected float attackRange;
-    protected float damage;
+    protected float enemyDamage;
+    public bool wasHit;
 
     protected float armor;
 }

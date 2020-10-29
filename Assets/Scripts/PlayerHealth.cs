@@ -33,9 +33,14 @@ public class PlayerHealth : MonoBehaviour
     {
         return armor;
     }
-    public void setHealth(float damage)
+    public void changeHealth(float damage)
     {
         health -= damage;
+    }
+
+    public void setHealth(float newHealth)
+    {
+        health = newHealth;
     }
 
     // Update is called once per frame

@@ -22,7 +22,7 @@ public class GrenadeLauncher : WeaponBase
     {
         ammo = 30f;
         maxAmmo = 190f;
-        damage = 100f;
+        weaponDamage = 100f;
         magCapacity = 30f;
         //ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
         reloadIndicator = GameObject.Find("reload indicator").GetComponent<TextMeshProUGUI>();
@@ -82,8 +82,7 @@ public class GrenadeLauncher : WeaponBase
                         Debug.Log(hit.transform.name);
                         if (hit.transform.name.Contains("e"))
                         {
-                            Destroy(hit.transform.gameObject);
-                            //hit.transform.gameObject.GetComponent<FireEnemy>().fAI = FireEnemy.FireAI.gethit;
+                            hit.transform.gameObject.GetComponent<FireEnemy>().takeDamage(weaponDamage);
                             Debug.Log("enemy hit");
                         }
                     }

@@ -36,24 +36,20 @@ public class FireEnemy : EnemyBase
         health = 100f;
         speed = 5f;
         armor = 0f;
-        damage = 25f;
+        enemyDamage = 1f;
         nmAgent = GetComponent<NavMeshAgent>();
         nmAgent.speed = speed;
         animator = GetComponent<Animator>();
         attackRange = 3.0f;
-        fAI = FireAI.Run;
         target = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
+        //distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
         //Debug.Log(distancefromPlayer);
-        if (distancefromPlayer < 3.0f)
-        {
-            setState(FireAI.attack1);
-        }
+
 
         switch (fAI)
         {
@@ -66,11 +62,15 @@ public class FireEnemy : EnemyBase
                 {
                     setState(FireAI.attack1);
                 }
+                if (health <= 0.0f)
+                {
+                    setState(FireAI.death2);
+                }
                 break;
             case FireAI.attack1:
                 nmAgent.isStopped = true;
                 nmAgent.speed = 0;
-                //target.GetComponent<PlayerHealth>().setHealth(damage);
+                target.GetComponent<PlayerHealth>().changeHealth(enemyDamage);
                 distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
                 if (distancefromPlayer > attackRange)
                 {
@@ -80,12 +80,71 @@ public class FireEnemy : EnemyBase
             case FireAI.attack2:
                 break;
             case FireAI.gethit:
-                health -= damage;
-                if (health <= 0.0f)
+                if (target.GetComponent<AR>())
                 {
-                    fAI = FireAI.death2;
+                    health -= target.GetComponent<AR>().weaponDamage;
+                    if (health <= 0.0f)
+                    {
+                        fAI = FireAI.death2;
+                    }
+                    break;
+                }
+                if (target.GetComponent<smg>())
+                {
+                    health -= target.GetComponent<smg>().weaponDamage;
+                    if (health <= 0.0f)
+                    {
+                        fAI = FireAI.death2;
+                    }
+                    break;
+                }
+                if (target.GetComponent<RocketLauncher>())
+                {
+                    health -= target.GetComponent<RocketLauncher>().weaponDamage;
+                    if (health <= 0.0f)
+                    {
+                        fAI = FireAI.death2;
+                    }
+                    break;
+                }
+                if (target.GetComponent<GrenadeLauncher>())
+                {
+                    health -= target.GetComponent<GrenadeLauncher>().weaponDamage;
+                    if (health <= 0.0f)
+                    {
+                        fAI = FireAI.death2;
+                    }
+                    break;
+                }
+                if (target.GetComponent<pistol>())
+                {
+                    health -= target.GetComponent<pistol>().weaponDamage;
+                    if (health <= 0.0f)
+                    {
+                        fAI = FireAI.death2;
+                    }
+                    break;
+                }
+                if (target.GetComponent<SniperRifle>())
+                {
+                    health -= target.GetComponent<SniperRifle>().weaponDamage;
+                    if (health <= 0.0f)
+                    {
+                        fAI = FireAI.death2;
+                    }
+                    break;
+                }
+                if (target.GetComponent<shotgun>())
+                {
+                    health -= target.GetComponent<shotgun>().weaponDamage;
+                    if (health <= 0.0f)
+                    {
+                        fAI = FireAI.death2;
+                    }
+                    break;
                 }
                 break;
+                
             case FireAI.death1:
                 break;
             case FireAI.death2:

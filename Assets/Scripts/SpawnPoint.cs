@@ -6,16 +6,20 @@ public class SpawnPoint : MonoBehaviour
 {
     [SerializeField]
     Transform[] spawnpoints;
-    [SerializeField]
     GameObject enemy;
+
+    List<GameObject> enemies;
 
     int pointtospawnAt;
     float spawnTimer;
     // Start is called before the first frame update
     void Start()
     {
+        enemies = new List<GameObject>();
         pointtospawnAt = Random.Range(0, spawnpoints.Length);
+        enemy = Resources.Load<GameObject>("Enemy");
         Instantiate(enemy, spawnpoints[pointtospawnAt].position, transform.rotation);
+        enemies.Add(enemy);
         spawnTimer = 2.0f;
         //Debug.Log(spawnpoints.Length);
     }
@@ -26,7 +30,6 @@ public class SpawnPoint : MonoBehaviour
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0.0f)
         {
-            Instantiate(enemy, spawnpoints[11].transform.position, transform.rotation);
             pointtospawnAt = Random.Range(0, spawnpoints.Length);
             Instantiate(enemy, spawnpoints[pointtospawnAt].transform.position, transform.rotation);
             spawnTimer = 2.0f;

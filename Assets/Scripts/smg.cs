@@ -22,7 +22,7 @@ public class smg : WeaponBase
     {
         ammo = 15f;
         maxAmmo = 120f;
-        damage = 100f;
+        weaponDamage = 18f;
         magCapacity = 30f;
         //ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
         noAmmo = GameObject.Find("no ammo").GetComponent<TextMeshProUGUI>();
@@ -84,8 +84,7 @@ public class smg : WeaponBase
                         Debug.Log(hit.transform.name);
                         if (hit.transform.name.Contains("e"))
                         {
-                            Destroy(hit.transform.gameObject);
-                            //hit.transform.gameObject.GetComponent<FireEnemy>().fAI = FireEnemy.FireAI.gethit;
+                            hit.transform.gameObject.GetComponent<FireEnemy>().takeDamage(weaponDamage);
                             Debug.Log("enemy hit");
                         }
                     }
