@@ -278,7 +278,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &286914231
 GameObject:
@@ -6431,7 +6431,6 @@ MonoBehaviour:
   - {fileID: 1660045973}
   - {fileID: 849020042}
   - {fileID: 1311681877}
-  enemy: {fileID: 4913101817607202547, guid: 0eba64999aa80fc44ac3e68eb49ce8f9, type: 3}
 --- !u!4 &1583012199
 Transform:
   m_ObjectHideFlags: 0
@@ -6687,60 +6686,3 @@ Transform:
   m_Father: {fileID: 1583012199}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -64.782, z: 0}
---- !u!1001 &6437783042335754334
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 156.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 38.229
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 91.361
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 887739630988331463, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7547573087339761418, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}
-      propertyPath: m_Name
-      value: Extra Damage
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1c9a8d3f5b820a542b39187d8ee37f92, type: 3}

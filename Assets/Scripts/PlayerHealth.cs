@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private float health = 100f;
     private float startHealth;
     private float armor = 100f;
+    public bool isInvulnerable = false;
 
     GameObject healthBar;
     GameObject armorBar;
@@ -46,6 +47,10 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isInvulnerable)
+        {
+            health = 100f;
+        }
         healthBar.GetComponent<Slider>().value = health / startHealth;
         if (health <= 0.0f)
         {

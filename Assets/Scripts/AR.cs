@@ -83,11 +83,11 @@ public class AR : WeaponBase
                     ray = new Ray(barrel.position, barrel.forward * range);
                     if (Physics.Raycast(ray, out hit, range, layermask))
                     {
-                        Debug.Log(hit.transform.name);
+                        //Debug.Log(hit.transform.name);
                         if (hit.transform.name.Contains("e"))
                         {
                             hit.transform.gameObject.GetComponent<FireEnemy>().takeDamage(weaponDamage);
-                            Debug.Log("enemy hit");
+                            //Debug.Log("enemy hit");
                         }
                     }
                 }

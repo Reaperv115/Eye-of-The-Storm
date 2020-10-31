@@ -9,11 +9,13 @@ using UnityEngine.UIElements;
 
 public class Arsenal : MonoBehaviour
 {
-    public GameObject[] arsenal; 
+    public GameObject[] arsenal;
+    public List<GameObject> powerups;
     public GameObject currentWeapon;
     public Transform hand;
 
     public int weaponIndex = 0;
+    int powerupsIndex = 0;
     public int selectedWeapon = 0;
     int previousWeapon;
     int lastvalidSpot = 0;
@@ -37,9 +39,48 @@ public class Arsenal : MonoBehaviour
     void Update()
     {
 
-        //Debug.Log(currentWeapon);
-
-        //previousWeapon = selectedWeapon;
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (powerups.Count <= 0)
+            {
+                Debug.Log("you dont currently have any powerups");
+            }
+            else
+            {
+                switch (powerups[powerupsIndex].name)
+                {
+                    case "Extra Damage":
+                        Debug.Log("just used a powerup");
+                        powerups[powerupsIndex].GetComponent<ExtraDamage>().Effect();
+                        Destroy(powerups[powerupsIndex]);
+                        powerups.Remove(powerups[powerupsIndex]);
+                        if (powerups.Count == 0)
+                        {
+                            Debug.Log("no more powerups");
+                        }
+                        else
+                        {
+                            powerupsIndex++;
+                        }
+                        break;
+                    case "Invulnerability":
+                        powerups[powerupsIndex].GetComponent<Invulnerability>().Effect();
+                        Destroy(powerups[powerupsIndex]);
+                        powerups.Remove(powerups[powerupsIndex]);
+                        if (powerups.Count == 0)
+                        {
+                            Debug.Log("no more powerups");
+                        }
+                        else
+                        {
+                            powerupsIndex++;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         //scroll through arsenal
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
@@ -79,7 +120,7 @@ public class Arsenal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        //if the player collides with a weapon
         if (other.gameObject.GetComponent<smg>()              ||
             other.gameObject.GetComponent<AR>()               ||
             other.gameObject.GetComponent<shotgun>()          ||
@@ -143,6 +184,14 @@ public class Arsenal : MonoBehaviour
                     break;
                 }
             }
+        }
+
+        //if the player collides with a powerup
+        if (other.CompareTag("powerup"))
+        {
+            Debug.Log("picked up powerup");
+            powerups.Add(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 
