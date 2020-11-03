@@ -142,6 +142,7 @@ MonoBehaviour:
   ammo: 0
   maxAmmo: 0
   weaponDamage: 0
+  originalDamage: 0
   barrel: {fileID: 5874770927263378257}
   layermask:
     serializedVersion: 2

@@ -112,10 +112,11 @@ MonoBehaviour:
   ammo: 0
   maxAmmo: 0
   weaponDamage: 0
+  originalDamage: 0
   barrel: {fileID: 4725116425096467254}
   layermask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!1 &6296951350416476415
 GameObject:
   m_ObjectHideFlags: 0

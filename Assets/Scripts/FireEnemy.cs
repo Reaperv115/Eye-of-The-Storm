@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -49,7 +48,6 @@ public class FireEnemy : EnemyBase
     {
         //distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
         //Debug.Log(distancefromPlayer);
-
 
         switch (fAI)
         {
@@ -157,6 +155,7 @@ public class FireEnemy : EnemyBase
                 break;
             case FireAI.death2:
                 Destroy(gameObject);
+                target.GetComponent<PlayerScore>().playerScore += target.GetComponent<PlayerScore>().pointsperKill;
                 break;
             default:
                 break;

@@ -10,6 +10,7 @@ public class ExtraDamage : PowerUpsBase
     void Start()
     {
         player = GameObject.Find("Player");
+        damageMultiplier = 4;
     }
 
     // Update is called once per frame
@@ -28,6 +29,11 @@ public class ExtraDamage : PowerUpsBase
             }
             else
             {
+                if (player.GetComponent<Arsenal>().arsenal[i].GetComponent<EnergyHammer>())
+                {
+                    player.GetComponent<Arsenal>().arsenal[i].GetComponent<EnergyHammer>().weaponDamage *= damageMultiplier;
+                    Debug.Log("Energy hammer damage multiplied");
+                }
                 if (player.GetComponent<Arsenal>().arsenal[i].GetComponent<AR>())
                 {
                     player.GetComponent<Arsenal>().arsenal[i].GetComponent<AR>().weaponDamage *= damageMultiplier;

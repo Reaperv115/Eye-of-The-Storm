@@ -22,7 +22,7 @@ public class smg : WeaponBase
     {
         ammo = 15f;
         maxAmmo = 120f;
-        weaponDamage = 18f;
+        originalDamage = weaponDamage = 18f;
         magCapacity = 30f;
         ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
         noAmmo = GameObject.Find("no ammo").GetComponent<TextMeshProUGUI>();

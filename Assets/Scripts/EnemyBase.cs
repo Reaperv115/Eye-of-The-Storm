@@ -1,13 +1,8 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    protected float health;
-    protected float speed;
-    protected float distancefromPlayer;
-    protected float attackRange;
-    protected float enemyDamage;
+    protected float health, speed, distancefromPlayer, attackRange, enemyDamage, armor;
     public bool wasHit;
-
-    protected float armor;
 }

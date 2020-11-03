@@ -6,5 +6,5 @@ public class WeaponBase : MonoBehaviour
 {
     protected float magCapacity, range;
     protected bool hasAmmo;
-    public float ammo, maxAmmo, weaponDamage;
+    public float ammo, maxAmmo, weaponDamage, originalDamage;
 }

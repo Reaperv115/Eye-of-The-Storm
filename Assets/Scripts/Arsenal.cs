@@ -15,10 +15,14 @@ public class Arsenal : MonoBehaviour
     public Transform hand;
 
     public int weaponIndex = 0;
-    int powerupsIndex = 0;
     public int selectedWeapon = 0;
+    int powerupsIndex = 0;
     int previousWeapon;
     int lastvalidSpot = 0;
+
+    float powerupTimer = 20f;
+
+    bool damageMultiplied = false, pointsDoubled = false;
 
     TextMeshProUGUI ammoTracker;
 
@@ -38,8 +42,95 @@ public class Arsenal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Extra Damage
+        if (damageMultiplied)
+        {
+            powerupTimer -= Time.deltaTime;
+            Debug.Log(powerupTimer);
+            if (powerupTimer <= 0f)
+            {
+                for (int i = 0; i < arsenal.Length; ++i)
+                {
+                    if (arsenal[i] == null)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        if (arsenal[i].GetComponent<EnergyHammer>())
+                        {
+                            arsenal[i].GetComponent<EnergyHammer>().weaponDamage = arsenal[i].GetComponent<EnergyHammer>().originalDamage;
+                            Debug.Log("energy hammer nerfed");
+                        }
+                        if (arsenal[i].GetComponent<AR>())
+                        {
+                            arsenal[i].GetComponent<AR>().weaponDamage = arsenal[i].GetComponent<AR>().originalDamage;
+                            Debug.Log("AR damage nerfed");
+                        }
+                        if (arsenal[i].GetComponent<smg>())
+                        {
+                            arsenal[i].GetComponent<smg>().weaponDamage = arsenal[i].GetComponent<smg>().originalDamage;
+                            Debug.Log("smg damage nerfed");
+                        }
+                        if (arsenal[i].GetComponent<pistol>())
+                        {
+                           arsenal[i].GetComponent<pistol>().weaponDamage = arsenal[i].GetComponent<pistol>().originalDamage;
+                            Debug.Log("pistol damage nerfed");
+                        }
+                        if (arsenal[i].GetComponent<shotgun>())
+                        {
+                            arsenal[i].GetComponent<shotgun>().weaponDamage = arsenal[i].GetComponent<shotgun>().originalDamage;
+                            Debug.Log("shotgun damage nerfed");
+                        }
+                        if (arsenal[i].GetComponent<GrenadeLauncher>())
+                        {
+                            arsenal[i].GetComponent<GrenadeLauncher>().weaponDamage = arsenal[i].GetComponent<GrenadeLauncher>().originalDamage;
+                            Debug.Log("grenadelauncher damage nerfed");
+                        }
+                        if (arsenal[i].GetComponent<RocketLauncher>())
+                        {
+                            arsenal[i].GetComponent<RocketLauncher>().weaponDamage = arsenal[i].GetComponent<RocketLauncher>().originalDamage;
+                            Debug.Log("rocket launcher damage nerfed");
+                        }
+                        if (arsenal[i].GetComponent<SniperRifle>())
+                        {
+                            arsenal[i].GetComponent<SniperRifle>().weaponDamage = arsenal[i].GetComponent<SniperRifle>().originalDamage;
+                            Debug.Log("sniper rifle damage nerfed");
+                        }
+                    }
 
-        if (Input.GetKey(KeyCode.E))
+
+                }
+                damageMultiplied = false;
+                powerupTimer = 20f;
+            }
+        }
+        //Invulnerability
+        if (GetComponent<PlayerHealth>().isInvulnerable)
+        {
+            powerupTimer -= Time.deltaTime;
+            Debug.Log(powerupTimer);
+            if (powerupTimer <= 0.0f)
+            {
+                GetComponent<PlayerHealth>().isInvulnerable = false;
+                powerupTimer = 20f;
+            }
+        }
+        //Double Points
+        if (pointsDoubled)
+        {
+            powerupTimer -= Time.deltaTime;
+            Debug.Log(powerupTimer);
+            if (powerupTimer <= 0.0f)
+            {
+                GetComponent<PlayerScore>().pointsperKill = 1;
+                pointsDoubled = false;
+                powerupTimer = 20f;
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (powerups.Count <= 0)
             {
@@ -52,15 +143,12 @@ public class Arsenal : MonoBehaviour
                     case "Extra Damage":
                         Debug.Log("just used a powerup");
                         powerups[powerupsIndex].GetComponent<ExtraDamage>().Effect();
+                        damageMultiplied = true;
                         Destroy(powerups[powerupsIndex]);
                         powerups.Remove(powerups[powerupsIndex]);
                         if (powerups.Count == 0)
                         {
                             Debug.Log("no more powerups");
-                        }
-                        else
-                        {
-                            powerupsIndex++;
                         }
                         break;
                     case "Invulnerability":
@@ -71,9 +159,15 @@ public class Arsenal : MonoBehaviour
                         {
                             Debug.Log("no more powerups");
                         }
-                        else
+                        break;
+                    case "Double Points":
+                        powerups[powerupsIndex].GetComponent<DoublePoints>().Effect();
+                        pointsDoubled = true;
+                        Destroy(powerups[powerupsIndex]);
+                        powerups.Remove(powerups[powerupsIndex]);
+                        if (powerups.Count == 0)
                         {
-                            powerupsIndex++;
+                            Debug.Log("no more powerups");
                         }
                         break;
                     default:
@@ -187,6 +281,7 @@ public class Arsenal : MonoBehaviour
         }
 
         //if the player collides with a powerup
+        //Debug.Log(other.tag);
         if (other.CompareTag("powerup"))
         {
             Debug.Log("picked up powerup");

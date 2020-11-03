@@ -59,11 +59,13 @@
     <Compile Include="Assets\Scripts\EnergyHammer.cs" />
     <Compile Include="Assets\Scripts\TheBox.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+    <Compile Include="Assets\DoublePoints.cs" />
     <Compile Include="Assets\Scripts\RocketLauncher.cs" />
     <Compile Include="Assets\Scripts\FireEnemy.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\SniperRifle.cs" />
+    <Compile Include="Assets\Invulnerability.cs" />
     <Compile Include="Assets\Scripts\WeaponBase.cs" />
     <Compile Include="Assets\Scripts\smg.cs" />
     <Compile Include="Assets\Scripts\GrenadeLauncher.cs" />
@@ -76,7 +78,7 @@
     <Compile Include="Assets\Scripts\PowerUpsBase.cs" />
     <Compile Include="Assets\Scripts\pistol.cs" />
     <Compile Include="Assets\Scripts\AR.cs" />
-    <Compile Include="Assets\Invulnerability.cs" />
+    <Compile Include="Assets\PlayerScore.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
