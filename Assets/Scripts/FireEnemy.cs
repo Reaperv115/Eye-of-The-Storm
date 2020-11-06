@@ -5,8 +5,18 @@ using UnityEngine.AI;
 public class FireEnemy : EnemyBase
 {
     GameObject target;
+    [SerializeField]
+    Transform lavapuddlePlacement;
+    [SerializeField]
+    GameObject lavaPuddle;
+    [SerializeField]
+    GameObject floor;
+
     NavMeshAgent nmAgent;
     Animator animator;
+
+    float temperature = 0.0f;
+    float timeuntilleavingPuddle = 0.0f;
 
     public enum FireAI
     {
@@ -49,6 +59,15 @@ public class FireEnemy : EnemyBase
         //distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
         //Debug.Log(distancefromPlayer);
 
+        if (timeuntilleavingPuddle >= 20.0f)
+        {
+            GameObject lavapuddleClone = Instantiate(lavaPuddle, lavapuddlePlacement.position, transform.rotation);
+            lavapuddleClone.transform.localScale += new Vector3(5.0f, 0.0f, 5.0f);
+            lavapuddleClone.transform.parent = null;
+            lavapuddleClone.transform.SetParent(floor.transform);
+            timeuntilleavingPuddle = 0.0f;
+        }
+
         switch (fAI)
         {
             case FireAI.Run:
@@ -56,9 +75,14 @@ public class FireEnemy : EnemyBase
                 nmAgent.isStopped = false;
                 nmAgent.SetDestination(target.transform.position);
                 distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
-                if (distancefromPlayer < attackRange)
+                if (distancefromPlayer <= attackRange)
                 {
                     setState(FireAI.attack1);
+                }
+                else
+                {
+                    timeuntilleavingPuddle += 0.01f;
+                    Debug.Log(timeuntilleavingPuddle);
                 }
                 if (health <= 0.0f)
                 {
@@ -68,7 +92,17 @@ public class FireEnemy : EnemyBase
             case FireAI.attack1:
                 nmAgent.isStopped = true;
                 nmAgent.speed = 0;
-                target.GetComponent<PlayerHealth>().changeHealth(enemyDamage);
+                ++temperature;
+                Debug.Log(temperature);
+                if (temperature >= 400f)
+                {
+                    Destroy(gameObject);
+                    distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
+                    if (distancefromPlayer <= 5f)
+                    {
+                        target.GetComponent<PlayerHealth>().changeHealth(enemyDamage);
+                    }
+                }
                 distancefromPlayer = Vector3.Distance(transform.position, target.transform.position);
                 if (distancefromPlayer > attackRange)
                 {
@@ -156,6 +190,12 @@ public class FireEnemy : EnemyBase
             case FireAI.death2:
                 Destroy(gameObject);
                 target.GetComponent<PlayerScore>().playerScore += target.GetComponent<PlayerScore>().pointsperKill;
+                int randomnumber = Random.Range(0, 100);
+                if (randomnumber % 4 == 0)
+                {
+                    int randompowerup = Random.Range(0, 2);
+                    Instantiate(target.GetComponent<Arsenal>().powerups[randompowerup], transform.position, transform.rotation);
+                }
                 break;
             default:
                 break;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExtraDamage : PowerUpsBase
 {
-    float damageMultiplier;
+    int damageMultiplier;
     GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -73,5 +73,6 @@ public class ExtraDamage : PowerUpsBase
             
 
         }
+        Debug.Log("your shit does extra damage");
     }
 }

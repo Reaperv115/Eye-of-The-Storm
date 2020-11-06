@@ -9,9 +9,10 @@ using UnityEngine.UIElements;
 
 public class Arsenal : MonoBehaviour
 {
-    public GameObject[] arsenal;
-    public List<GameObject> powerups;
+    public List<GameObject> acquiredpowerUps;
+    public GameObject[] powerups = new GameObject[3];
     public GameObject currentWeapon;
+    public GameObject[] arsenal;
     public Transform hand;
 
     public int weaponIndex = 0;
@@ -129,43 +130,52 @@ public class Arsenal : MonoBehaviour
             }
         }
 
-
+        //using powerups
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (powerups.Count <= 0)
+            if (acquiredpowerUps.Count <= 0)
             {
                 Debug.Log("you dont currently have any powerups");
             }
             else
             {
-                switch (powerups[powerupsIndex].name)
+                switch (acquiredpowerUps[powerupsIndex].name)
                 {
-                    case "Extra Damage":
+                    case "Extra Damage(Clone)":
                         Debug.Log("just used a powerup");
-                        powerups[powerupsIndex].GetComponent<ExtraDamage>().Effect();
+                        acquiredpowerUps[powerupsIndex].GetComponent<ExtraDamage>().Effect();
                         damageMultiplied = true;
-                        Destroy(powerups[powerupsIndex]);
-                        powerups.Remove(powerups[powerupsIndex]);
-                        if (powerups.Count == 0)
+                        Destroy(acquiredpowerUps[powerupsIndex]);
+                        acquiredpowerUps.Remove(acquiredpowerUps[powerupsIndex]);
+                        if (acquiredpowerUps.Count == 0)
                         {
                             Debug.Log("no more powerups");
                         }
                         break;
-                    case "Invulnerability":
-                        powerups[powerupsIndex].GetComponent<Invulnerability>().Effect();
-                        Destroy(powerups[powerupsIndex]);
-                        powerups.Remove(powerups[powerupsIndex]);
-                        if (powerups.Count == 0)
+                    case "Invulnerability(Clone)":
+                        acquiredpowerUps[powerupsIndex].GetComponent<Invulnerability>().Effect();
+                        Destroy(acquiredpowerUps[powerupsIndex]);
+                        acquiredpowerUps.Remove(acquiredpowerUps[powerupsIndex]);
+                        if (acquiredpowerUps.Count == 0)
                         {
                             Debug.Log("no more powerups");
                         }
                         break;
-                    case "Double Points":
-                        powerups[powerupsIndex].GetComponent<DoublePoints>().Effect();
+                    case "Double Points(Clone)":
+                        acquiredpowerUps[powerupsIndex].GetComponent<DoublePoints>().Effect();
                         pointsDoubled = true;
-                        Destroy(powerups[powerupsIndex]);
-                        powerups.Remove(powerups[powerupsIndex]);
-                        if (powerups.Count == 0)
+                        Destroy(acquiredpowerUps[powerupsIndex]);
+                        acquiredpowerUps.Remove(acquiredpowerUps[powerupsIndex]);
+                        if (acquiredpowerUps.Count == 0)
+                        {
+                            Debug.Log("no more powerups");
+                        }
+                        break;
+                    case "Max Ammo(Clone)":
+                        acquiredpowerUps[powerupsIndex].GetComponent<MaxAmmo>().Effect();
+                        Destroy(acquiredpowerUps[powerupsIndex]);
+                        acquiredpowerUps.Remove(acquiredpowerUps[powerupsIndex]);
+                        if (acquiredpowerUps.Count == 0)
                         {
                             Debug.Log("no more powerups");
                         }
@@ -242,37 +252,37 @@ public class Arsenal : MonoBehaviour
                 {
                     if (other.gameObject.GetComponent<smg>())
                     {
-                        ++arsenal[i].GetComponent<smg>().maxAmmo;
+                        ++arsenal[i].GetComponent<smg>().reserves;
                         Destroy(other.gameObject);
                     }
                     if (other.gameObject.GetComponent<SniperRifle>())
                     {
-                        ++arsenal[i].GetComponent<SniperRifle>().maxAmmo;
+                        ++arsenal[i].GetComponent<SniperRifle>().reserves;
                         Destroy(other.gameObject);
                     }
                     if (other.gameObject.GetComponent<shotgun>())
                     {
-                        ++arsenal[i].GetComponent<shotgun>().maxAmmo;
+                        ++arsenal[i].GetComponent<shotgun>().reserves;
                         Destroy(other.gameObject);
                     }
                     if (other.gameObject.GetComponent<RocketLauncher>())
                     {
-                        ++arsenal[i].GetComponent<RocketLauncher>().maxAmmo;
+                        ++arsenal[i].GetComponent<RocketLauncher>().reserves;
                         Destroy(other.gameObject);
                     }
                     if (other.gameObject.GetComponent<pistol>())
                     {
-                        ++arsenal[i].GetComponent<pistol>().maxAmmo;
+                        ++arsenal[i].GetComponent<pistol>().reserves;
                         Destroy(other.gameObject);
                     }
                     if (other.gameObject.GetComponent<AR>())
                     {
-                        ++arsenal[i].GetComponent<AR>().maxAmmo;
+                        ++arsenal[i].GetComponent<AR>().reserves;
                         Destroy(other.gameObject);
                     }
                     if (other.gameObject.GetComponent<GrenadeLauncher>())
                     {
-                        ++arsenal[i].GetComponent<GrenadeLauncher>().maxAmmo;
+                        ++arsenal[i].GetComponent<GrenadeLauncher>().reserves;
                         Destroy(other.gameObject);
                     }
                     break;
@@ -285,7 +295,7 @@ public class Arsenal : MonoBehaviour
         if (other.CompareTag("powerup"))
         {
             Debug.Log("picked up powerup");
-            powerups.Add(other.gameObject);
+            acquiredpowerUps.Add(other.gameObject);
             other.gameObject.SetActive(false);
         }
     }

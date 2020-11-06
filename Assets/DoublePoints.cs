@@ -21,5 +21,6 @@ public class DoublePoints : PowerUpsBase
     {
         base.Effect();
         player.GetComponent<PlayerScore>().pointsperKill = 2;
+        Debug.Log("points per kill: " + player.GetComponent<PlayerScore>().pointsperKill);
     }
 }

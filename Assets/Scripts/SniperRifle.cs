@@ -20,10 +20,10 @@ public class SniperRifle : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
-        ammo = 30f;
-        maxAmmo = 190f;
-        weaponDamage = 100f;
-        magCapacity = 30f;
+        mag = 30;
+        reserves = 190;
+        originalDamage = weaponDamage = 100;
+        magCapacity = 30;
         ammoTracker = GameObject.Find("ammo Tracker").GetComponent<TextMeshProUGUI>();
         reloadIndicator = GameObject.Find("reload indicator").GetComponent<TextMeshProUGUI>();
         noAmmo = GameObject.Find("no ammo").GetComponent<TextMeshProUGUI>();
@@ -37,9 +37,9 @@ public class SniperRifle : WeaponBase
     {
         Debug.DrawRay(barrel.position, barrel.forward * range);
 
-        ammoTracker.text = ammo + "/" + maxAmmo;
+        ammoTracker.text = mag + "/" + reserves;
 
-        if (ammo <= 0f && maxAmmo <= 0f)
+        if (mag <= 0f && reserves <= 0f)
         {
             hasAmmo = false;
         }
@@ -55,29 +55,29 @@ public class SniperRifle : WeaponBase
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                if (maxAmmo - magCapacity <= 0f)
+                if (reserves - magCapacity <= 0)
                 {
-                    maxAmmo = 0f;
-                    ammo += (magCapacity - ammo);
+                    reserves = 0;
+                    mag += (magCapacity - mag);
                 }
                 else
                 {
-                    maxAmmo -= (magCapacity - ammo);
-                    ammo = magCapacity;
+                    reserves -= (magCapacity - mag);
+                    mag = magCapacity;
                 }
 
                 reloadIndicator.text = "";
             }
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (ammo <= 0f)
+                if (mag <= 0f)
                 {
                     reloadIndicator.text = "Reload!";
                 }
                 else
                 {
-                    --ammo;
+                    --mag;
                     ray = new Ray(barrel.position, barrel.forward * range);
                     if (Physics.Raycast(ray, out hit, range, layermask))
                     {

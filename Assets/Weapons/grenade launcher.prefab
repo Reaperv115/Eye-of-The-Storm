@@ -126,8 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d9f248e1e196e48b0ee124a5dc4c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 0
-  maxAmmo: 0
+  mag: 0
+  reserves: 0
+  magCapacity: 0
+  reservesCapacity: 0
   weaponDamage: 0
   originalDamage: 0
   barrel: {fileID: 4074571133176444146}
