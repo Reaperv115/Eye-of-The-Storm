@@ -37,4 +37,15 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
     }
+
+
+    //working on slowing player when walking through melted floor
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.transform.name);
+        if (other.name == "lava puddle(Clone)")
+        {
+            speed = 9.0f;
+        }
+    }
 }

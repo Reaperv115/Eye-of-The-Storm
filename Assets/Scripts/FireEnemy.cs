@@ -62,9 +62,10 @@ public class FireEnemy : EnemyBase
         if (timeuntilleavingPuddle >= 20.0f)
         {
             GameObject lavapuddleClone = Instantiate(lavaPuddle, lavapuddlePlacement.position, transform.rotation);
-            lavapuddleClone.transform.localScale += new Vector3(5.0f, 0.0f, 5.0f);
+            Transform puddleSpot = lavapuddleClone.transform;
+            lavapuddleClone.transform.localScale += new Vector3(2.0f, 0.0f, 2.0f);
             lavapuddleClone.transform.parent = null;
-            lavapuddleClone.transform.SetParent(floor.transform);
+            lavapuddleClone.transform.SetParent(puddleSpot);
             timeuntilleavingPuddle = 0.0f;
         }
 
@@ -82,7 +83,7 @@ public class FireEnemy : EnemyBase
                 else
                 {
                     timeuntilleavingPuddle += 0.01f;
-                    Debug.Log(timeuntilleavingPuddle);
+                    //Debug.Log(timeuntilleavingPuddle);
                 }
                 if (health <= 0.0f)
                 {

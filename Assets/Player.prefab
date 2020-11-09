@@ -191,7 +191,6 @@ Transform:
   - {fileID: 247437745808964377}
   - {fileID: 247437747378980796}
   - {fileID: 247437747043080083}
-  - {fileID: 247437747378525686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152db5321831d884dab376ea7c16aeca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInvulnerable: 0
 --- !u!114 &247437747322515188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,42 +266,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70c1a2d0e829d74f80dd9f3febc0faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arsenal: []
+  acquiredpowerUps: []
+  powerups:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentWeapon: {fileID: 0}
+  arsenal: []
   hand: {fileID: 247437747436529233}
-  backpack: {fileID: 247437747378525686}
   weaponIndex: 0
   selectedWeapon: 0
---- !u!1 &247437747378525681
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 247437747378525686}
-  m_Layer: 0
-  m_Name: backpack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &247437747378525686
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247437747378525681}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.308, z: -0.493}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 247437747322515191}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &247437747378980799
 GameObject:
   m_ObjectHideFlags: 0

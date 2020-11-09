@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 247437747322515178, guid: a4b8f575391e0c643ba3bd8e7e651d6f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 247437747322515184, guid: a4b8f575391e0c643ba3bd8e7e651d6f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -876,7 +880,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.9127344, z: 0.8804435}
   m_Children: []
   m_Father: {fileID: 1631084390}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &848568615
 GameObject:
